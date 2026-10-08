@@ -1,17 +1,13 @@
 #pragma once //header guard
 #include <iostream>
 
-namespace KimSiyun2649069 // 1. 본인이름학번의 네임스페이스
+namespace KimSiyun2649069 //본인이름학번의 네임스페이스
 {
     class student 
     {
-    //private:
         int id {};
         int score {};
         char grade {};
-
-// grade('A'~'F')
-        
         void testId() {// id(1000000~9999999): 7 digits
             if (id < 1000000 || id > 9999999) {
                 std::cout << "Invalid ID\n";
@@ -34,6 +30,11 @@ namespace KimSiyun2649069 // 1. 본인이름학번의 네임스페이스
         }
     
     public:
+        student(int d = 2649069, int s = 0, char g = 'F')
+            :id{d}, score{s}, grade{g}
+            {
+                testId(); testScore(); testGrade();
+            }
         void input(){
             std::cout << "Enter ID: ";
             std::cin >> id; testId();
@@ -42,12 +43,12 @@ namespace KimSiyun2649069 // 1. 본인이름학번의 네임스페이스
             std::cout << "Enter grade: ";
             std::cin >> id; testGrade();
         }
-        void setID(int d){id = d; testId();}
+        void setId(const int d){id = d; testId();}
         void setScore(int s){score = s; testScore();}
         void setGrade(char g){grade = g; testGrade();}
-        void print(){std::cout << id << "," << score << "," << grade << "\n";}
-        int getId() {return id;}
-        int getScore() {return score;}
-        char getGrade() {return grade;}
+        void print() const {std::cout << id << ", " << score << ", " << grade << "\n";}
+        int getId() const {return id;}
+        int getScore() const {return score;}
+        char getGrade() const {return grade;}
     };
 }
